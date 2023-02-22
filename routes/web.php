@@ -16,3 +16,12 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('login',['App\Http\Controllers\LoginController','showLoginForm'])->name('login');
+//Handle the logout Request
+Route::post('logoutfff', ['App\Http\Controllers\LoginController', 'logout'])->name('logout');
+Route::get('register',['App\Http\Controllers\RegisterController','showRegisterForm'])->name('register');
+Route::post('register',['App\Http\Controllers\RegisterController','store'])->name('register.store');
+Route::get('/dashboard', function () {
+    return view('auth.dashboard');
+})->middleware(['auth'])->name('dashboard');
